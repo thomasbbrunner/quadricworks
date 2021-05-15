@@ -12,61 +12,63 @@
 
 void Scene::add_geometry(Geometry geometry)
 {
-    // TODO don't append all geometries together.
-    // scene should be composed of different geometries.
-    // appending geometries should be done by creating another geometry
-    this->geometry.vertex_coordinates_mesh.insert(
-        this->geometry.vertex_coordinates_mesh.end(),
-        geometry.vertex_coordinates_mesh.begin(),
-        geometry.vertex_coordinates_mesh.end());
-
-    // Print::array(this->geometry.vertex_coordinates_mesh);
-
-    this->geometry.vertex_coordinates_contour.insert(
-        this->geometry.vertex_coordinates_contour.end(),
-        geometry.vertex_coordinates_contour.begin(),
-        geometry.vertex_coordinates_contour.end());
-
-    this->geometry.vertex_coordinates_dots.insert(
-        this->geometry.vertex_coordinates_dots.end(),
-        geometry.vertex_coordinates_dots.begin(),
-        geometry.vertex_coordinates_dots.end());
-
-    // Adapting indices to new vertex IDs
-    unsigned int max_index;
-    if (this->geometry.vertex_indices_mesh.size() != 0)
-    {
-        max_index = 1 + *std::max_element(this->geometry.vertex_indices_mesh.begin(), this->geometry.vertex_indices_mesh.end());
-    }
-    else
-    {
-        max_index = 0;
-    }
-
-    quad::math::add_to_each(&geometry.vertex_indices_mesh, max_index);
-
-    this->geometry.vertex_indices_mesh.insert(
-        this->geometry.vertex_indices_mesh.end(),
-        geometry.vertex_indices_mesh.begin(),
-        geometry.vertex_indices_mesh.end());
-
-    // Adapting indices to new vertex IDs
-    if (this->geometry.vertex_indices_contour.size() != 0)
-    {
-        max_index = 1 + *std::max_element(this->geometry.vertex_indices_contour.begin(), this->geometry.vertex_indices_contour.end());
-    }
-    else
-    {
-        max_index = 0;
-    }
-
-    quad::math::add_to_each(&geometry.vertex_indices_contour, max_index);
-
-    this->geometry.vertex_indices_contour.insert(
-        this->geometry.vertex_indices_contour.end(),
-        geometry.vertex_indices_contour.begin(),
-        geometry.vertex_indices_contour.end());
+    geometries.push_back(geometry);
 }
+// CODE TO APPEND GEOMETRIES
+// TODO don't append all geometries together.
+// scene should be composed of different geometries.
+// appending geometries should be done by creating another geometry
+// this->geometry.vertex_coordinates_mesh.insert(
+//     this->geometry.vertex_coordinates_mesh.end(),
+//     geometry.vertex_coordinates_mesh.begin(),
+//     geometry.vertex_coordinates_mesh.end());
+
+// // Print::array(this->geometry.vertex_coordinates_mesh);
+
+// this->geometry.vertex_coordinates_contour.insert(
+//     this->geometry.vertex_coordinates_contour.end(),
+//     geometry.vertex_coordinates_contour.begin(),
+//     geometry.vertex_coordinates_contour.end());
+
+// this->geometry.vertex_coordinates_dots.insert(
+//     this->geometry.vertex_coordinates_dots.end(),
+//     geometry.vertex_coordinates_dots.begin(),
+//     geometry.vertex_coordinates_dots.end());
+
+// // Adapting indices to new vertex IDs
+// unsigned int max_index;
+// if (this->geometry.vertex_indices_mesh.size() != 0)
+// {
+//     max_index = 1 + *std::max_element(this->geometry.vertex_indices_mesh.begin(), this->geometry.vertex_indices_mesh.end());
+// }
+// else
+// {
+//     max_index = 0;
+// }
+
+// quad::math::add_to_each(&geometry.vertex_indices_mesh, max_index);
+
+// this->geometry.vertex_indices_mesh.insert(
+//     this->geometry.vertex_indices_mesh.end(),
+//     geometry.vertex_indices_mesh.begin(),
+//     geometry.vertex_indices_mesh.end());
+
+// // Adapting indices to new vertex IDs
+// if (this->geometry.vertex_indices_contour.size() != 0)
+// {
+//     max_index = 1 + *std::max_element(this->geometry.vertex_indices_contour.begin(), this->geometry.vertex_indices_contour.end());
+// }
+// else
+// {
+//     max_index = 0;
+// }
+
+// quad::math::add_to_each(&geometry.vertex_indices_contour, max_index);
+
+// this->geometry.vertex_indices_contour.insert(
+//     this->geometry.vertex_indices_contour.end(),
+//     geometry.vertex_indices_contour.begin(),
+//     geometry.vertex_indices_contour.end());
 
 void Scene::generate_buffers()
 {

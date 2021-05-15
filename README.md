@@ -48,3 +48,4 @@ cd ../
     - Instead, allow the creation of a new geometry from merged geometries, which could then be used in a scene.
 * Re-add OpenGL ES support
 * Do proper C++ casting
+* Look into WebGPU!

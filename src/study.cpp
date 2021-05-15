@@ -9,8 +9,6 @@
 #include "scene.hpp"
 #include "time.hpp"
 
-Lighting lighting;
-
 int main()
 {
     // Window
@@ -52,6 +50,7 @@ int main()
     // Lights
     Light light1;
     Light light2;
+    Lighting lighting;
     // Light sun(LIGHT_DIRECTIONAL);
     // 1. Add a light source
     lighting.add_source(&light1);
